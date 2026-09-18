@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MULTIVERSE</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="landing" class="landing">
+  <div class="landing-shade"></div>
+  <div class="landing-top"><span class="brand-mark">✦</span> MULTIVERSE <span class="status">PORTAIL EN VEILLE</span></div>
+  <div class="landing-center"><p class="eyebrow">UN AUTRE UNIVERS T'ATTEND</p><h1 id="landingTitle">Entre dans le<br><em>Multiverse.</em></h1><p class="muted">Appuie sur <kbd>F8</kbd> pour ouvrir le portail</p><button id="enterBtn" class="primary">OUVRIR LE PORTAIL <span>↗</span></button></div>
+  <div class="landing-bottom"><span>PERSONAL PORTAL / v1.0</span><span>F8 — BASCULER</span></div>
+</div>
+<div id="portal" class="portal hidden">
+  <aside class="sidebar">
+    <a class="sidebrand" href="#" data-view="games"><span class="brand-mark">✦</span><span>MULTI<span class="accent">VERSE</span></span></a>
+    <div class="side-label">ESPACE</div>
+    <button class="nav active" data-view="games"><span>▦</span> Game Hub</button>
+    <button class="nav" data-view="school"><span>⌂</span> Collège</button>
+    <div class="side-bottom"><div class="online-dot"></div><span>Portail actif</span><button id="adminOpen" title="Administration">⚙</button></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><span class="crumb">MULTIVERSE</span><span class="slash">/</span><span id="pageCrumb">GAME HUB</span></div><div class="top-actions"><span class="hint"><kbd>F8</kbd> Accueil</span><button class="icon-btn" id="topAdmin" title="Administration">⚙</button></div></header>
+    <section id="gamesView" class="view">
+      <div class="hero-row"><div><p class="eyebrow">TON ESPACE DE JEU</p><h2>Choisis ton <em>univers.</em></h2><p class="muted">Tes jeux préférés, réunis au même endroit.</p></div><div class="count"><strong id="gameCount">0</strong><span>PORTAILS</span></div></div>
+      <div class="toolbar"><div class="search-wrap">⌕ <input id="gameSearch" placeholder="Rechercher un jeu..." aria-label="Rechercher un jeu"></div><button class="primary small" id="quickAdd">＋ Ajouter un jeu</button></div>
+      <div id="gameGrid" class="game-grid"></div>
+      <div id="emptyGames" class="empty hidden"><div class="empty-icon">✦</div><h3>Ton univers est encore vide</h3><p>Ajoute un jeu depuis l'administration pour commencer.</p><button class="outline" id="emptyAdd">＋ Ajouter un premier jeu</button></div>
+    </section>
+    <section id="schoolView" class="view hidden">
+      <div class="hero-row"><div><p class="eyebrow">OUTILS & RESSOURCES</p><h2>Le coin <em>collège.</em></h2><p class="muted">Tes raccourcis utiles, au même endroit.</p></div></div>
+      <div class="school-note"><span>✦</span><div><strong>Ton espace, tes liens</strong><p>Configure les liens des applications depuis l'administration.</p></div></div>
+      <div id="schoolGrid" class="school-grid"></div>
+      <button class="outline" id="schoolAdmin">⚙ Gérer les applications</button>
+    </section>
+  </main>
+</div>
+<div id="admin" class="admin-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="adminTitle">
+ <div class="admin-panel">
+  <header class="admin-header"><div><p class="eyebrow">CONTRÔLE DU PORTAIL</p><h2 id="adminTitle">Administration</h2></div><button id="adminClose" class="icon-btn" aria-label="Fermer">✕</button></header>
+  <div class="admin-tabs"><button class="tab active" data-tab="appearance">Apparence</button><button class="tab" data-tab="games">Jeux</button><button class="tab" data-tab="school">Collège</button></div>
+  <section class="admin-section" id="tab-appearance"><h3>Écran d'accueil</h3><label class="field">Image (URL ou fichier)<input id="wallpaperUrl" placeholder="https://…"></label><label class="file-label">Choisir une image depuis ton appareil<input id="wallpaperFile" type="file" accept="image/*"></label><label class="field">Petit titre<input id="welcomeTitle" maxlength="80" placeholder="Entre dans le Multiverse."></label><div class="preview-row"><div id="wallpaperPreview"></div><span>Aperçu de l'image</span></div><button id="saveAppearance" class="primary">Enregistrer l'apparence</button></section>
+  <section class="admin-section hidden" id="tab-games"><div class="section-heading"><h3>Emplacements de jeux</h3><button class="primary small" id="addGame">＋ Nouveau</button></div><p class="muted smalltext">Colle l'URL d'un jeu web. Certains sites bloquent l'intégration : le bouton « Ouvrir » reste disponible.</p><div id="adminGamesList" class="admin-list"></div></section>
+  <section class="admin-section hidden" id="tab-school"><div class="section-heading"><h3>Applications du collège</h3><button class="primary small" id="addSchool">＋ Nouveau</button></div><div id="adminSchoolList" class="admin-list"></div></section>
+  <footer class="admin-footer"><span>Enregistré dans ce navigateur</span><button id="resetAll" class="text-danger">Réinitialiser les données</button></footer>
+ </div>
+</div>
+<div id="player" class="player-overlay hidden"><header class="player-head"><button id="playerBack" class="icon-btn">←</button><strong id="playerName">Jeu</strong><div class="player-actions"><button id="openExternal" class="outline small">Ouvrir dans un onglet ↗</button><button id="playerClose" class="icon-btn">✕</button></div></header><iframe id="gameFrame" title="Jeu intégré" referrerpolicy="no-referrer"></iframe><div id="frameNotice" class="frame-notice hidden">Si le jeu ne se charge pas, utilise « Ouvrir dans un onglet ».</div></div>
+<script src="app.js"></script>
+</body></html>
